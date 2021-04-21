@@ -24,21 +24,34 @@ About Dockerfile content is written in Node.js official [doc](https://nodejs.org
 I changed `WORKDIR` to `/usr/src/`, and removed `EXPOSE` part.
 
 ### Dockerizing Process
-`docker build . -t yourHubDockerUsername/yourImageName`\
-(in my case: docker build . -t vladdius/node-js-server-image)\
-`docker tag yourImageId vladdius/node-js-server-image:version1.0`\
-(it's an option command, if you want you can add `:version1.0`, otherwise it's default `latest` version)\
-Create your image repository in docker hub, as we do it in github for git repositories.\
-(in our vladdius/node-js-server-image:version1.0)
-`docker login` (type Docker hub your credentials)\
-`docker push yourHubDockerUsername/yourImageName`\
-(docker push node-js-server-image:version1.0)
-
-`docker run -p mapping-port:nodejs-app-port --name your-custom-container-name -d yourImageName`\
-(docker run -p 4004:4002 --name node-server-container -d vladdius/node-js-server-image:version1.0)\
+1 Build your image.
+```
+docker build . -t yourHubDockerUsername/yourImageName
+```
+in my case: `docker build . -t vladdius/node-js-server-image`\
+2 Tag your image (it's an option command, if you want you can add `:version1.0`, otherwise it's default `latest` version)
+```
+docker tag yourImageId yourHubDockerUsername/yourImageName:version1.0
+```
+in my case: `docker tag yourImageId vladdius/node-js-server-image:version1.0`\
+3 Create your image repository in docker hub, as we do it in github for git repositories. (in our vladdius/node-js-server-image:version1.0).\
+4 Type Docker hub your credentials.
+```
+docker login
+```
+5 Push your image on hub docker.
+```
+docker push yourHubDockerUsername/yourImageName
+```
+in my case: `docker push node-js-server-image:version1.0)`\
+6 Run your image (it will pull from the hub if you don't it have on your host).
+```
+docker run -p mapping-port:nodejs-app-port --name your-custom-container-name -d yourImageName
+```
+in my case: `docker run -p 4004:4002 --name node-server-container -d vladdius/node-js-server-image:version1.0)`\
 Tip: on mac OS `--name your-custom-container-name` part is required. 
 
-Try in your browser.
+7 Check your server in the browser.\
 http://localhost:`mapping-port`\
 (http://localhost:4004)
 
