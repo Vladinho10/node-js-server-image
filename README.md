@@ -4,7 +4,6 @@
 * [Server app](#server-app)
 * [docker](#docker)
 * [Dockerizing Process](#dockerizing-process)
-* [Run image](#run-image)
 
 
 ### Server app
@@ -25,17 +24,24 @@ About Dockerfile content is written in Node.js official [doc](https://nodejs.org
 I changed `WORKDIR` to `/usr/src/`, and removed `EXPOSE` part.
 
 ### Dockerizing Process
-`docker build . -t yourHubDockerUsername/yourImageName` (in my case docker build . -t vladdius/node-js-server-image)\
-`docker tag yourImageId vladdius/node-js-server-image:version1.0` (it's an option command, if you want you can add `:version1.0`, otherwise it's default `latest` version)\
-Create your image repository in docker hub. (in our node-js-server-image:version1.0)\
+`docker build . -t yourHubDockerUsername/yourImageName`\
+(in my case: docker build . -t vladdius/node-js-server-image)\
+`docker tag yourImageId vladdius/node-js-server-image:version1.0`\
+(it's an option command, if you want you can add `:version1.0`, otherwise it's default `latest` version)\
+Create your image repository in docker hub, as we do it in github for git repositories.\
+(in our vladdius/node-js-server-image:version1.0)
 `docker login` (type Docker hub your credentials)\
-`docker push yourHubDockerUsername/yourImageName` (docker push node-js-server-image:version1.0)\
+`docker push yourHubDockerUsername/yourImageName`\
+(docker push node-js-server-image:version1.0)
 
-`docker run -p mapping-port:nodejs-app-port --name your-custom-container-name -d yourImageName` (docker run -p 4004:4002 --name node-server-container -d vladdius/node-js-server-image:version1.0)\
-Tip: oc mac OS `--name your-custom-container-name` part is required. 
+`docker run -p mapping-port:nodejs-app-port --name your-custom-container-name -d yourImageName`\
+(docker run -p 4004:4002 --name node-server-container -d vladdius/node-js-server-image:version1.0)\
+Tip: on mac OS `--name your-custom-container-name` part is required. 
 
 Try in your browser.
-http://localhost:`mapping-port` (http://localhost:4004)
-
+http://localhost:`mapping-port`\
+(http://localhost:4004)
 
 Docker hub [link](https://hub.docker.com/r/vladdius/node-js-server-image) of this image.
+
+<img src="docker-node.png"  alt="docker-node.js"/>
