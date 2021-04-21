@@ -1,0 +1,25 @@
+{
+  "name": "dockerizing-node.js-app",
+  "version": "1.0.0",
+  "description": "Just universal server",
+  "repository": "https://github.com/Vladinho10/node-js-server-image",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vlad Mkhitaryan",
+  "license": "ISC",
+  "keywords": [
+    "docker",
+    "mac",
+    "mac OS",
+    "container",
+    "node.js app",
+    "image",
+    "example",
+    "server"
+  ],
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
